@@ -57,6 +57,7 @@ public class RecyclerAdapterCategory extends RecyclerView.Adapter<RecyclerAdapte
         }
         else{
             holder.arrowLayout.setVisibility(View.GONE);
+            holder.view1.setVisibility(View.GONE);
         }
 
         if (cardIsOpen){

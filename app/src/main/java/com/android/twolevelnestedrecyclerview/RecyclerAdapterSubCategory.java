@@ -50,6 +50,7 @@ public class RecyclerAdapterSubCategory  extends RecyclerView.Adapter<RecyclerAd
         }
         else{
             holder.arrowLayout.setVisibility(View.GONE);
+            holder.view1.setVisibility(View.GONE);
         }
 
         if (cardIsOpen){
@@ -64,11 +65,13 @@ public class RecyclerAdapterSubCategory  extends RecyclerView.Adapter<RecyclerAd
                     holder.downArrow.setVisibility(View.VISIBLE);
                     holder.upArrow.setVisibility(View.GONE);
                     holder.recyclerView.setVisibility(View.GONE);       // close card
+                    holder.view1.setVisibility(View.GONE);
                     cardIsOpen = false;
                 }else {
                     holder.downArrow.setVisibility(View.GONE);
                     holder.upArrow.setVisibility(View.VISIBLE);
                     holder.recyclerView.setVisibility(View.VISIBLE);
+                    holder.view1.setVisibility(View.VISIBLE);
                     cardIsOpen = true;
                 }
             }
@@ -87,6 +90,7 @@ public class RecyclerAdapterSubCategory  extends RecyclerView.Adapter<RecyclerAd
         TextView subCategoryTitle;
         ImageView imageView,downArrow,upArrow;
         LinearLayout arrowLayout;
+        View view1;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -98,6 +102,7 @@ public class RecyclerAdapterSubCategory  extends RecyclerView.Adapter<RecyclerAd
             layoutManager = new LinearLayoutManager(context);
             recyclerView.setLayoutManager(layoutManager);
             downArrow = itemView.findViewById(R.id.downArrow);
+            view1 = itemView.findViewById(R.id.view1);
             arrowLayout = itemView.findViewById(R.id.arrowLayout);
             upArrow = itemView.findViewById(R.id.upArrow);
 
