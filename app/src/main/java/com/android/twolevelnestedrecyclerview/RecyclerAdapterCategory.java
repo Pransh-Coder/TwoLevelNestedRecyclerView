@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,23 +55,30 @@ public class RecyclerAdapterCategory extends RecyclerView.Adapter<RecyclerAdapte
             //Log.e("RecyclerAdapterCategory",""+categoryPojoList.get(position).getSubCategoryPojosList().size());
             holder.recyclerView.setAdapter(adapter);
         }
-
-        if (cardIsOpen){
-            holder.recyclerView.setVisibility(View.GONE);
+        else{
+            holder.arrowLayout.setVisibility(View.GONE);
         }
 
-        holder.downArrow.setOnClickListener(new View.OnClickListener() {
+
+        if (cardIsOpen){
+            holder.recyclerView.setVisibility(View.GONE);       // by default the card is closed so downArrow visible
+        }
+
+        holder.arrowLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (cardIsOpen){
+                    holder.downArrow.setVisibility(View.VISIBLE);
+                    holder.upArrow.setVisibility(View.GONE);
                     holder.recyclerView.setVisibility(View.GONE);       // close card
                     cardIsOpen = false;
                 }else {
+                    holder.downArrow.setVisibility(View.GONE);
+                    holder.upArrow.setVisibility(View.VISIBLE);
                     holder.recyclerView.setVisibility(View.VISIBLE);
                     cardIsOpen = true;
                 }
-
             }
         });
 
@@ -85,8 +93,9 @@ public class RecyclerAdapterCategory extends RecyclerView.Adapter<RecyclerAdapte
 
         RecyclerView recyclerView;
         TextView categoryTitle;
-        ImageView imageView,downArrow;
+        ImageView imageView,downArrow,upArrow;
         CardView cardLayout;
+        LinearLayout arrowLayout;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -95,6 +104,8 @@ public class RecyclerAdapterCategory extends RecyclerView.Adapter<RecyclerAdapte
             categoryTitle = itemView.findViewById(R.id.categoryTitle);
             imageView = itemView.findViewById(R.id.imageView);
             cardLayout = itemView.findViewById(R.id.cardLayout);
+            arrowLayout = itemView.findViewById(R.id.arrowLayout);
+            upArrow = itemView.findViewById(R.id.upArrow);
             recyclerView = itemView.findViewById(R.id.recyclerView2);
             downArrow = itemView.findViewById(R.id.downArrow);
             layoutManager = new LinearLayoutManager(context);

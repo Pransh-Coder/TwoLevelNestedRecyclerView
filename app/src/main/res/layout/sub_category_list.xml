@@ -42,15 +42,32 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"/>
 
-            <ImageView
-                android:id="@+id/downArrow"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_down_arrow"
-                android:layout_marginEnd="14dp"
+            <LinearLayout
+                android:id="@+id/arrowLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/downArrow"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_down_arrow"
+                    android:layout_marginEnd="14dp" />
+
+                <ImageView
+                    android:id="@+id/upArrow"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_up_arrow"
+                    android:layout_marginEnd="14dp" />
+
+            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,23 +48,29 @@ public class RecyclerAdapterSubCategory  extends RecyclerView.Adapter<RecyclerAd
             //Log.e("om_bind_view_size:",""+categoryPojoList.get(position).getFormLists().size());
             holder.recyclerView.setAdapter(adapter);
         }
+        else{
+            holder.arrowLayout.setVisibility(View.GONE);
+        }
 
         if (cardIsOpen){
             holder.recyclerView.setVisibility(View.GONE);
         }
 
-        holder.downArrow.setOnClickListener(new View.OnClickListener() {
+        holder.arrowLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (cardIsOpen){
+                    holder.downArrow.setVisibility(View.VISIBLE);
+                    holder.upArrow.setVisibility(View.GONE);
                     holder.recyclerView.setVisibility(View.GONE);       // close card
                     cardIsOpen = false;
                 }else {
+                    holder.downArrow.setVisibility(View.GONE);
+                    holder.upArrow.setVisibility(View.VISIBLE);
                     holder.recyclerView.setVisibility(View.VISIBLE);
                     cardIsOpen = true;
                 }
-
             }
         });
     }
@@ -78,7 +85,8 @@ public class RecyclerAdapterSubCategory  extends RecyclerView.Adapter<RecyclerAd
 
         RecyclerView recyclerView;
         TextView subCategoryTitle;
-        ImageView imageView,downArrow;
+        ImageView imageView,downArrow,upArrow;
+        LinearLayout arrowLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +98,8 @@ public class RecyclerAdapterSubCategory  extends RecyclerView.Adapter<RecyclerAd
             layoutManager = new LinearLayoutManager(context);
             recyclerView.setLayoutManager(layoutManager);
             downArrow = itemView.findViewById(R.id.downArrow);
+            arrowLayout = itemView.findViewById(R.id.arrowLayout);
+            upArrow = itemView.findViewById(R.id.upArrow);
 
 
         }
