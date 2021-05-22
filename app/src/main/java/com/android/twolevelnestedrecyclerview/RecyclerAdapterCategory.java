@@ -59,9 +59,9 @@ public class RecyclerAdapterCategory extends RecyclerView.Adapter<RecyclerAdapte
             holder.arrowLayout.setVisibility(View.GONE);
         }
 
-
         if (cardIsOpen){
             holder.recyclerView.setVisibility(View.GONE);       // by default the card is closed so downArrow visible
+            holder.view1.setVisibility(View.GONE);
         }
 
         holder.arrowLayout.setOnClickListener(new View.OnClickListener() {
@@ -72,11 +72,13 @@ public class RecyclerAdapterCategory extends RecyclerView.Adapter<RecyclerAdapte
                     holder.downArrow.setVisibility(View.VISIBLE);
                     holder.upArrow.setVisibility(View.GONE);
                     holder.recyclerView.setVisibility(View.GONE);       // close card
+                    holder.view1.setVisibility(View.GONE);
                     cardIsOpen = false;
                 }else {
                     holder.downArrow.setVisibility(View.GONE);
                     holder.upArrow.setVisibility(View.VISIBLE);
                     holder.recyclerView.setVisibility(View.VISIBLE);
+                    holder.view1.setVisibility(View.VISIBLE);
                     cardIsOpen = true;
                 }
             }
@@ -96,6 +98,7 @@ public class RecyclerAdapterCategory extends RecyclerView.Adapter<RecyclerAdapte
         ImageView imageView,downArrow,upArrow;
         CardView cardLayout;
         LinearLayout arrowLayout;
+        View view1;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -106,6 +109,7 @@ public class RecyclerAdapterCategory extends RecyclerView.Adapter<RecyclerAdapte
             cardLayout = itemView.findViewById(R.id.cardLayout);
             arrowLayout = itemView.findViewById(R.id.arrowLayout);
             upArrow = itemView.findViewById(R.id.upArrow);
+            view1 = itemView.findViewById(R.id.view1);
             recyclerView = itemView.findViewById(R.id.recyclerView2);
             downArrow = itemView.findViewById(R.id.downArrow);
             layoutManager = new LinearLayoutManager(context);
